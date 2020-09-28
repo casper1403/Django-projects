@@ -1,0 +1,52 @@
+{% extends 'layout.html' %} {% load static%}
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="{% static 'css/trainer.css'  %}">
+   <title>Pokemon</title>
+ </head>
+ <body>
+   {% block content%}
+
+<form style = 'margin-top:3%;' action="" method="POST">
+        {% csrf_token %}
+  <button class='btn-primary btn-large'  type="Submit" name='Search' value='Find'> Look For Pokemon!</button>
+</form>
+
+{% if pokemon %}
+
+  <div class="container">
+
+
+  <img width=250 src="{% static 'images/'%}{{pokemon.pokedex_number}}.png" alt="">
+
+  <table style="width:100%">
+    <tr>
+      <th>Pokedex Number</th>
+      <th>Name</th>
+      <th>hp</th>
+    </tr>
+    <tr>
+      <td>{{pokemon.pokedex_number}} </td>
+      <td>{{pokemon.name}}</td>
+      <td>{{pokemon.hp}}</td>
+    </tr>
+  </table>
+
+  <form style = 'margin-top:3%;' action="" method="POST">
+          {% csrf_token %}
+    <button class='btn-primary btn-large'  type="Submit" name='Catch' value='Try'> Try to Catch</button>
+  </form>
+  </div>
+{% endif %}
+
+{% if caught %}
+{{caught}}
+{% endif %}
+
+
+ </body>
+</html>
+
+{% endblock %}

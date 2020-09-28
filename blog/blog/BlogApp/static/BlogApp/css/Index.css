@@ -1,0 +1,54 @@
+
+.background-image{
+  background: url("/static/BlogApp/Images/pen.jpg") 50% 0 no-repeat fixed;
+  background-size : cover;
+  background-position: center;
+  height:100vh;
+  color:white;
+}
+
+.bg {
+  height: 500px;
+  opacity: 0.9;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 35px;
+}
+
+
+
+.journal-block-title{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.post-block
+{
+  padding-top: 150px;
+  margin-right: 40px;
+}
+
+.journal-block-content{
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 35px;
+  margin-left: 25px;
+}
+
+.no-acces{
+  text-align: center;
+    padding-top:25%;
+}
+
+
+
+.front-letters{
+   font-family: 'Archivo';
+  font-size: 32px;
+  padding-top: 225px;
+  color:white;
+  text-align: center;
+  vertical-align:middle;
+}

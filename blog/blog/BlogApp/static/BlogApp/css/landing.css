@@ -1,0 +1,19 @@
+body{
+  background: url("/static/BlogApp/Images/pen.jpg") 50% 0 no-repeat fixed;
+  background-size : cover;
+  background-position: center;
+
+}
+hr{
+  border: none;
+  width: 400px;
+  height: 6px;
+  color:white;
+  background-color: white;
+}
+
+#content{
+  color: white;
+  text-align: center;
+  padding-top:35%;
+}

@@ -1,0 +1,57 @@
+ {% extends 'layout.html' %} {% load static%} {% block content %}
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/trainer.css'  %}">
+    <title>Pokemon</title>
+  </head>
+  <body>
+
+
+        <h2>{{ user.get_full_name }}</h2>
+        <ul>
+          <li>Username: {{ user.username }}</li>
+          <li>trainername: {{ user.Profile.trainername }}</li>
+        </ul>
+
+
+        <h2>change trainer</h2>
+        <form method="post">
+          {% csrf_token %}
+          {% for field in form %}
+            <p>
+
+              {{ field }}
+              {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text }}</small>
+              {% endif %}
+              {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+              {% endfor %}
+            </p>
+          {% endfor %}
+          <button type="submit">Sign up</button>
+        </form>
+
+
+            {{pokemon.pokemon}}
+
+    {% for poke in pokemon  %}
+
+    <br>
+    <img src="{% static 'images/'%}{{poke.pokedex_number}}.png" alt="" style="width:100px;height:100px;">
+              <a href="{% url 'delete' index=poke.pokedex_number %}" <button  type="submit">Delete</button></a>
+     {{poke.pokedex_number}}
+
+
+
+
+    {% endfor%}
+
+  </body>
+</html>
+
+
+
+{% endblock %}

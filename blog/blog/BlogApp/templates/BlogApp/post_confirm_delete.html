@@ -1,0 +1,32 @@
+{% extends 'BlogApp/layout.html' %} {% load static %} {% block content %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+            <div class="card rounded shadow shadow-sm">
+                <div class="signup-form">
+                    <div class="card-header">
+                        <p class="hint-text">Delete Post</p>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                <legend class="border-border mb-4"> Are you sure you want to delete the post: <br> <b>{{ object.title }}</b></legend>
+                            </fieldset>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                <a class="btn btn-outline-secondary" href="{%url 'Blog:Post-detail' object.id %}">Keep</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

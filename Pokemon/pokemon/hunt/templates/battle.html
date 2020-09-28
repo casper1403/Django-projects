@@ -1,0 +1,86 @@
+{% extends 'layout.html' %} {% load static%}
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="{% static 'css/trainer.css'  %}">
+   <title>Pokemon</title>
+ </head>
+ <body>
+   {% block content%}
+
+   <div class="container-fluid">
+
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+
+     {% if battle %}
+
+        <a href="{% url 'Fight' %}"><button type="submit" >Fight!</button> </a>
+
+     {% endif %}
+
+     <div class="row">
+
+<div class="col-lg-6">
+
+
+
+   <form  method="POST">
+     {% csrf_token %}
+
+   {% for poke in pokemon  %}
+
+   <br>
+   <img src="{% static 'images/'%}{{poke.pokedex_number}}.png" alt="" style="width:100px;height:100px;">
+
+      <button type="submit" name="poke" value={{poke.pokedex_number}}>Select</button>
+    Name : {{poke.name}}<br>
+    Number : {{poke.pokedex_number}}<br>
+
+    HP : {{poke.hp}}<br>
+    Attack : {{poke.attack}}<br>
+    Defense : {{poke.defense}}<br>
+    Speed: {{poke.speed}}<br>
+
+    {% endfor %}
+       </form>
+</div>
+
+<div class="col-lg-6">
+
+  <form  method="POST">
+    {% csrf_token %}
+
+
+  {% for hunt in hunters  %}
+
+     <img src="{% static 'images/'%}{{hunt.pokedex_number}}.png" alt="" style="width:100px;height:100px;">
+           <button type="submit" name="delete" value={{hunt.pokedex_number}}>Delete</button>
+        Name : {{hunt.name}}<br>
+         Number : {{hunt.pokedex_number}}<br>
+         HP : {{hunt.hp}}<br>
+         Attack : {{hunt.attack}}<br>
+         Defense : {{hunt.defense}}<br>
+         Speed: {{hunt.speed}}<br>
+
+
+
+   {% endfor %}
+  </form>
+</div>
+            </div>
+
+   </div>
+ </body>
+</html>
+
+{% endblock %}

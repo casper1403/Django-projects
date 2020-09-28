@@ -1,0 +1,35 @@
+
+.backnav{
+  background-color: rgb(52,58,64);
+  padding-top: 100px;
+  height:200vmin;
+}
+
+.card-img-top{
+  height: 200px;
+  width: 100%;
+}
+
+
+.content-style{
+  padding-top: 150px;
+}
+
+.card
+{
+  margin-bottom: 50px;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.card-text{
+  height: 5rem;
+}
+
+
+.text-center{
+  margin-top: 25px;
+}
+
+.

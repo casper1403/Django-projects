@@ -1,0 +1,98 @@
+{% extends 'BlogApp/layout.html' %} {% load static %}{% block content %} {% load crispy_forms_tags %}
+<head>
+    <link type="text/css" href="{% static 'BlogApp/css/sidenav.css' %}" rel="stylesheet">
+</head>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-md-12 col-sm-12 backnav">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="card">
+                        <img class="card-img-top  img-responsive" src="{{ user.profile.image.url }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title"> Hello {{user.username}}</h5>
+                            <p class="card-text">Click here to update or view your profile</p>
+                            <div class="text-center">
+                                <a class='text-center' href="{% url 'users:Profile' %}">
+                                <button class="btn btn-secondary" type="button">Update your profiles</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 ">
+                    <div class="card">
+                        <img class="card-img-top  img-responsive" src="{% static 'BlogApp/Images/notebook.jpg' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Chapter</h5>
+                            <p class="card-text">Click here to Create a new Chapter</p>
+                            <div class="text-center">
+                                <a href="{% url 'BlogApp:Post-create' %}">
+                                <button class="btn btn-secondary" type="button">Create new Chapter</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="card">
+                        <img class="card-img-top  img-responsive" src="{% static 'BlogApp/Images/reading.jpg'  %}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Read other Chapters </h5>
+                            <p class="card-text">Click here to see what other people have posted</p>
+                            <div class="text-center">
+                                <a href="{% url 'BlogApp:Blogs' %}">
+                                <button class="btn btn-secondary" type="button">Click here</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 ">
+                    <div class="card">
+                        <img class="card-img-top img-responsive" src="{% static 'BlogApp/Images/books.jpg' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Journals</h5>
+                            <p class="card-text">Click here to see your own journal</p>
+                            <div class="text-center">
+                                <a href="{% url 'BlogApp:Index' %}">
+                                <button class="btn btn-secondary" type="button">Go to your journal</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-12 col-sm-12 content-style">
+            <h1> {{ user.username}} </h1>
+            {% if user.profile.image.url%}
+            <img class="img-fluid img-thumbnail" src="{{ user.profile.image.url }}" alt=""> {% else %}
+            <p>Image not found</p>
+            {% endif %}
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-border mb-4"> Update profile picture</legend>
+                    {{p_form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-info"> Update </button>
+                </div>
+            </form>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-border mb-4"> Profile Info</legend>
+                    {{u_form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-info"> Update </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

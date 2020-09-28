@@ -1,0 +1,39 @@
+{% extends 'layout.html' %} {% load static %}{% block content %}
+
+<body>
+<div class="background-image">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+
+
+                        <div class="card rounded shadow shadow-sm">
+                            <div class="card-header">
+                                <h3 class="mb-0">Login</h3>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{form}}
+                                    <button class="btn btn-outline-info" type="submit">Login</button>
+                                </form>
+                                Don't have an account? <a href="{% url 'signup' %}"><strong>register here</strong></a>!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+
+{% endblock %}

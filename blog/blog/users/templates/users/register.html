@@ -1,0 +1,35 @@
+{% extends 'BlogApp/layout.html' %} {% load static %} {% block content %} {% load crispy_forms_tags %}
+
+<div class="background-image">
+
+
+<div class="container ">
+    <div class="row">
+        <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+            <div class="card rounded shadow shadow-sm" style="margin-top:150px;">
+                <div class="signup-form">
+                    <div class="card-header">
+                        <h2>Register</h2>
+                        <p class="hint-text">Create your account.</p>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                <legend class="border-border mb-4"> Join Today</legend>
+                                {{form|crispy }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-info">Sign Up</button>
+                            </div>
+                        </form>
+                        <div class="text-muted">Already have an account? <a href="{% url 'users:Login' %}">Sign in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'BlogApp/layout.html' %} {% load static %} {% block content %}
+<head>
+    <link type="text/css" href="{% static 'BlogApp/css/Index.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'BlogApp/css/sidenav.css' %}" rel="stylesheet">
+</head>
+{% if user.is_authenticated %}
+<div class="container-fluid">
+<div class="row">
+    <div class="col-lg-4 col-md-12 col-sm-12 backnav">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top  img-responsive" src="{{ user.profile.image.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"> Hello {{user.username}}</h5>
+                        <p class="card-text">Click here to update or view your profile</p>
+                        <div class="text-center">
+                            <a class='text-center' href="{% url 'users:Profile' %}">
+                            <button class="btn btn-secondary" type="button">Update your profiles</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 ">
+                <div class="card">
+                    <img class="card-img-top  img-responsive" src="{% static 'BlogApp/Images/notebook.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Chapter</h5>
+                        <p class="card-text">Click here to create and share a new Chapter</p>
+                        <div class="text-center">
+                            <a href="{% url 'BlogApp:Post-create' %}">
+                            <button class="btn btn-secondary" type="button">Create new Chapter</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top  img-responsive" src="{% static 'BlogApp/Images/reading.jpg'  %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Read other Chapters </h5>
+                        <p class="card-text">Click here to see what other people have posted</p>
+                        <div class="text-center">
+                            <a href="{% url 'BlogApp:Blogs' %}">
+                            <button class="btn btn-secondary" type="button">Click here</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 ">
+                <div class="card">
+                    <img class="card-img-top img-responsive" src="{% static 'BlogApp/Images/books.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Journals</h5>
+                        <p class="card-text">Click here to see your own journal</p>
+                        <div class="text-center">
+                            <a href="{% url 'BlogApp:Index' %}">
+                            <button class="btn btn-secondary" type="button">Go to your journal</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if posts %}
+    <div class="col-lg-8 col-md-12 col-sm-12">
+        <div class="post-block">
+            <h2 style="text-align: center; margin-bottom: 45px;">Your Previous Journals: </h2>
+            {% for post in posts %}
+            <div class="journal-block-title">
+                <h5>{{post.title}}<br> <i>{{post.date_posted}}</i></h5>
+                <a href="{% url 'Blog:Post-update' post.id %}"><button >Update</button></a>
+                <a href="{% url 'Blog:Post-delete' post.id %}"><button >Delete</button></a>
+            </div>
+            <hr>
+            <div class="journal-block-content">
+                <p class="text-justify" >{{post.content}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
+<div style="margin-bottom: 45px;" class="container">
+    <div class="journal-block-title post-block">
+        <h5>You have no journals!</h5>
+        <a href="{% url 'BlogApp:Post-create' %}">
+        <button class="btn btn-secondary" type="button">Create Journal</button>
+        </a>
+    </div>
+</div>
+{% endif%}
+{% else %}
+<div class="background-image">
+    <div class="container">
+        <div class="no-acces ">
+            <h3> Login to create a journal</h3>
+        </div>
+        <div class="journal-block-content">
+            <a href="{% url 'users:Login' %}">
+            <button class="btn btn-dark btn-lg" type="button" name="button">Click to log in</button>
+            </a>or
+            <a href="{% url 'users:Register' %}">
+            <button class="btn btn-dark btn-lg" type="button" name="button">Create an account</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endif%}
+{% endblock %}

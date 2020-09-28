@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link type="text/css" href="{% static 'loginpage/css/style.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>Van der Vliet Professionele Keukenapparatuur</title>
+</head>
+
+<body>
+
+    <div class="container" >
+        <img class="img-fluid logo" src="{% static 'loginpage/media/VanderVliet.png' %}"  alt="">
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Giorik <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Olis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+        </div>
+    </nav>
+
+
+
+    <div class="container-fuid productbox ">
+      <div class="row">
+
+        <div class="col-3">
+          <div class="sidebar">
+            <ul>
+              <li>Kooktoestellen Gas</li>
+              <li>Inductie Kooktoestellen</li>
+              <li>Ceramische Kooktoestellen Elektrisch</li>
+              <li>Bakplaten Gas</li>
+              <li>Bakplaten Elektrisch</li>
+              <li>Friteuses</li>
+              <li>Au Bain-Marie</li>
+              <li>Pasta Cookers</li>
+              <li>Neutrale Units</li>
+            </ul>
+          </div>
+            </div>
+
+            <div class="col-6">
+          {% if data %}
+        <table class='table container'>
+          <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Typenummer</th>
+            <th scope="col">kW</th>
+            <th scope="col">Afmetingen</th>
+            <th scope="col">Prijs</th>
+          </tr>
+            </thead>
+
+            <tbody>
+
+            {% for nummer in data%}
+                {% if nummer.Categorie == 'Bakplaten Gas' and nummer.Lijn == "700 lijn" %}
+            <tr>
+              <td> <img class="img-fluid productimage" src= "{%static 'loginpage/media/'%}{{nummer.Typenummer}}.jpg" alt="{{nummer.Typenummer}}"> </td>
+
+              <th scope="row">{{nummer.Typenummer }}</th>
+              <td>{{nummer.kW }}</td>
+              <td>{{nummer.Afmetingen}}</td>
+
+              <td>{{nummer.Prijs }},-</td>
+            </tr>
+              {% endif %}
+            {%endfor%}
+            </tbody>
+            </table>
+          {% endif %}
+              </div>
+
+              <div class="col-3">
+
+                  </div>
+                </div>
+</div>
+
+
+
+
+
+    <footer class="footer" >
+        <div class="container">
+            <div class="box footer-address">
+                Van der Vliet
+                <br> Professionele Keukenapparatuur
+                <br> Huis ter Heideweg 11, 3705 MA Zeist
+                <br>
+                <i class="fa fa-phone"></i><a href="tel:0306925915">030 692 59 15</a>
+                <br>
+                <i class="fa fa-envelope-o"></i><a href="mailto:info@vandervliet.nl">info@vandervliet.nl</a>
+                <br>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</html>

@@ -1,0 +1,25 @@
+/*!
+ * Start Bootstrap - Blog Post (https://startbootstrap.com/template-overviews/blog-post)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-post/blob/master/LICENSE)
+ */
+
+ .background-image{
+   background: url("/static/BlogApp/Images/pen.jpg") 50% 0 no-repeat fixed;
+   background-size : cover;
+   background-position: center;
+   height:100vh;
+   
+ }
+
+
+.footer{
+    margin-top: 120px;
+   color:white;
+   text-align: center;
+}
+/* IE 6 */
+* html #footer {
+   position:absolute;
+   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}

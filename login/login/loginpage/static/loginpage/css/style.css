@@ -1,0 +1,50 @@
+
+
+
+
+body{
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.navbar{
+  background-color:rgb(34,34,34);
+      padding: 1em;
+
+}
+
+.logo{
+  height: 80px;
+  margin-top: 40px;
+  width: 500px;
+  margin-bottom: 50px;
+}
+
+.productbox{
+  margin-top: 1.5%;
+  flex: 1;
+  margin-bottom: 1.5%;
+}
+
+.productimage{
+  height: 120px;
+}
+
+
+.sidebar{
+  border-style: solid;
+  border-color: #99b8c7ff;
+
+  height:800px;
+}
+
+.footer {
+  background-color: rgb(34,34,34);
+  color: #fff;
+  padding: 1em;
+  width: 100%;
+  bottom: 0;
+  height: auto;
+}
