@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>TheReadingGame</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
+  	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $( function() {
+        $( "#game" ).autocomplete({
+          source: "{% url 'home' %}",
+          minLength: 2
+        });
+      });
+      </script>
+  </head>
+
+  <body>
+
+
+      	<!-- Start Header -->
+    	<header class="" role="banner">
+    			<nav class="navbar navbar-default mu-navbar">
+    			  	<div class="container-fluid">
+    				    <!-- Brand and toggle get grouped for better mobile display -->
+    				    <div class="navbar-header">
+    				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    				        <span class="sr-only">Toggle navigation</span>
+    				        <span class="icon-bar"></span>
+    				        <span class="icon-bar"></span>
+    				        <span class="icon-bar"></span>
+    				      </button>
+    				      <a class="navbar-brand" href="{% url 'home' %}"><i class="fa fa-book" aria-hidden="true"></i>TheReadingGame</a>
+    				    </div>
+    				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    				      	<ul class="nav navbar-nav mu-menu navbar-right">
+    					        <li><a href="{% url 'home' %}"> Search A Book</a></li>
+    					        <li><a href="{% url 'about' %}">About</a></li>
+    				      	</ul>
+    				    </div><!-- /.navbar-collapse -->
+    			  	</div>
+    			</nav>
+    	</header>
+    	<!-- End Header -->
+
+<div class="container-fluid">
+  <div class="center-screen">
+
+    <div class="content-center">
+      <h1>About: </h1>
+
+      <h4>This website contains an organized collection of information. </h4>
+
+      <h1>Organizers:</h1>
+
+      <h4> The creators of this website are Casper van der Vliet, Goncagül Sahin, Nicole van Gils, Ninande Vermeer, Wytze Dijkstraand and Zahra Saied</h4>
+
+      <h1>What is being organized:</h1>
+
+      <h4> The information that is collected are video games and books classified based on tag names. The video games come from a dataset from Steam and the books from Goodreads.
+
+
+         The goal of organizing this information is to provide a recommendation on which book to read, based on your gaming preference. At the home screen you can input their favourite game which will result in a recommendation of 5 different books. The user can then select on of this book to receive extra information about it.
+    </h4>
+
+
+
+    </div>
+    </div>
+    </div>
+
+</div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
